@@ -8,15 +8,23 @@ const addZeros = require('../utils/addZeros');
 
 const asciiTo8bit = str => {
   // Your code here
+  let ascii = ''
+  for(let i = 0; i < str.length; i++){
+    let decimal = str.charCodeAt(i)
+    let binary = (decimal).toString(2)
+    let results = addZeros(binary.toString(), 8)
+    ascii += results
+  }
+  return ascii
 };
 
 /******************************************************************************/
 
 console.log(asciiTo8bit('123'));
-// 001100010011001000110011
+// // 001100010011001000110011
 
 console.log(asciiTo8bit('ABC'));
-// 010000010100001001000011
+// // 010000010100001001000011
 
 console.log(asciiTo8bit('Hello, world!'));
 // 01001000011001010110110001101100011011110010110000100000011101110110111101110010011011000110010000100001
