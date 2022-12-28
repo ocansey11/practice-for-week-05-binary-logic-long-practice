@@ -23,6 +23,19 @@ const binaryStringToArray = str => {
 
 const binaryToAscii = str => {
   // Your code here
+  let binaryArray = binaryStringToArray(str)
+  let ascii = ''
+  for(let i = 0; i < binaryArray.length; i++){
+    let binary  = binaryArray[i]
+    if(binary[0] == 0){
+      binary = binary.slice(1)
+    }
+
+    let decimal = parseInt(binary, 2)
+    let results = String.fromCharCode(decimal)
+    ascii += results
+  }
+  return ascii
 };
 
 /******************************************************************************/
@@ -31,7 +44,7 @@ console.log(binaryToAscii('011000010110001001100011'));
 // 'abc'
 
 console.log(binaryToAscii('010000010100001001000011'));
-// 'ABC'
+// // 'ABC'
 
 console.log(binaryToAscii('010010000110010101101100011011000110111100101100001000000111011101101111011100100110110001100100'));
 // 'Hello, world'
