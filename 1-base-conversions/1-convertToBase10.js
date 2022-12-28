@@ -4,6 +4,35 @@
 
 const convertToBase10 = str => {
   // Your code here
+  // check str[0] && str[1] are '0' x 'b' respectively
+  let newArr = str.split('')
+  let total = 0
+  const base2 = 2
+  const base16 = 16
+
+  if(newArr[0]== 0 && newArr[1] == 'b'){
+    // check no other string appears within the values
+    for(let i = 2; i < newArr.length; i++){
+      if(!(newArr[i] === '1' || newArr [i] === '0')){
+        throw TypeError("invalid binary value  : "  + newArr[i])
+      }
+    }
+
+    for(let i = newArr.length - 1; i > 1; i--){
+      let power = newArr.length - i
+      let value  = parseInt(newArr[i])
+
+      total += (base2 ** power) * value
+      console.log((base2 ** power) * value)
+    }
+    return total
+  }
+
+  // check str[0] && str[1] are '0' or 'x' respectively to test for hex
+
+  else{
+    throw TypeError("value must begin with '0b' to show its a binary")
+  }
 };
 
 /******************************************************************************/
