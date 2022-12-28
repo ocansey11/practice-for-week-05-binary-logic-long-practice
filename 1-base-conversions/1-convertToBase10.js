@@ -19,16 +19,33 @@ const convertToBase10 = str => {
     }
 
     for(let i = newArr.length - 1; i > 1; i--){
-      let power = newArr.length - i
+      let power = (newArr.length-1) - i
       let value  = parseInt(newArr[i])
 
       total += (base2 ** power) * value
-      console.log((base2 ** power) * value)
     }
     return total
   }
 
+
   // check str[0] && str[1] are '0' or 'x' respectively to test for hex
+  if(newArr[0]== 0 && newArr[1] == 'x'){
+    // check no other string appears within the values
+    let hexValues = 'abcdefABCDEF0123456789'
+    for(let i = 2; i < newArr.length; i++){
+      if(!(hexValues.includes(newArr[i]))){
+        throw TypeError("invalid hexadecimal value : "  + newArr[i])
+      }
+    }
+
+    for(let i = newArr.length - 1; i > 1; i--){
+      let power = (newArr.length-1) - i
+      let value  = parseInt(newArr[i], 16)
+
+      total += (base16 ** power) * value
+    }
+    return total
+  }
 
   else{
     throw TypeError("value must begin with '0b' to show its a binary")
